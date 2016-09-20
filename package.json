@@ -1,0 +1,46 @@
+{
+  "name": "interviewx",
+  "version": "1.0.0",
+  "description": "UberOps Soccer League App",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=development node ./server/express-server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frankievx/interview-x.git"
+  },
+  "author": "Francis Vithayathil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frankievx/interview-x/issues"
+  },
+  "homepage": "https://github.com/frankievx/interview-x#readme",
+  "dependencies": {
+    "angular": "^1.4.1",
+    "angular-animate": "^1.5.8",
+    "angular-aria": "^1.5.8",
+    "angular-material": "^1.1.1",
+    "angular-ui-router": "^0.2.15",
+    "express": "^4.13.0",
+    "knex": "^0.12.1",
+    "mysql": "^2.11.1"
+  },
+  "devDependencies": {
+    "autoprefixer-core": "^5.2.1",
+    "babel-core": "^5.6.15",
+    "babel-loader": "^5.3.1",
+    "css-loader": "^0.15.1",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "file-loader": "^0.8.4",
+    "html-loader": "^0.3.0",
+    "http-proxy": "^1.11.1",
+    "postcss-loader": "^0.5.1",
+    "style-loader": "^0.12.3",
+    "uglify-loader": "^1.2.0",
+    "webpack": "^1.10.1",
+    "webpack-dev-middleware": "^1.8.1",
+    "webpack-hot-middleware": "^2.12.2"
+  }
+}

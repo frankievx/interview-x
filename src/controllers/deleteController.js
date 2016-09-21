@@ -1,4 +1,5 @@
-export default angular.module('UberOpsApp').controller('deleteController', ['$authorize', 'desserts', '$mdDialog', '$nutrition', '$scope', '$q', function ($authorize, desserts, $mdDialog, $nutrition, $scope, $q) {
+
+export default angular.module('UberOpsApp').controller('deleteController', ['matches', '$mdDialog', '$nutrition', '$scope', '$q', function ($authorize, desserts, $mdDialog, $nutrition, $scope, $q) {
   'use strict';
   
   this.cancel = $mdDialog.cancel;

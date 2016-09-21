@@ -1,17 +1,21 @@
-export default angular.module('UberOpsApp').controller('addItemController', ['$mdDialog', '$nutrition', '$scope', function ($mdDialog, $nutrition, $scope) {
+
+
+export default angular.module('UberOpsApp').controller('addItemController', ['$mdDialog', '$scope', '$http', function ($mdDialog,  $scope, $http) {
   'use strict';
 
   this.cancel = $mdDialog.cancel;
   
-  function success(dessert) {
-    $mdDialog.hide(dessert);
+  function success(match) {
+    console.log('success');
+    $mdDialog.hide(match);
   }
   
   this.addItem = function () {
     $scope.item.form.$setSubmitted();
     
     if($scope.item.form.$valid) {
-      $nutrition.desserts.save({dessert: $scope.dessert}, success);
+      $scope.match.match_date = $scope.match.match_date
+      $http.post('/api/addMatch',  $scope.match).then(success);
     }
   };
   

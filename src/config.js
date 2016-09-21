@@ -1,9 +1,7 @@
-function config($compileProvider, $mdThemingProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
-  $compileProvider.debugInfoEnabled(false);
-    
+function config( $mdThemingProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
+
   $mdThemingProvider.theme('default')
     .primaryPalette('blue')
-    .accentPalette('pink');
 
   $locationProvider.html5Mode(true);
 
@@ -12,10 +10,10 @@ function config($compileProvider, $mdThemingProvider, $stateProvider, $urlRouter
   $stateProvider
     .state('main', {
       url: '/',
-      template: require('./templates/nutritionTemplate.html'),
-      controller: 'nutritionController',
+      template: require('./templates/standingsTemplate.html'),
+      controller: 'standingsController',
       title: ''
     });
 }
 
-export default ['$compileProvider', '$mdThemingProvider', '$stateProvider', '$urlRouterProvider', '$locationProvider', config];
+export default ['$mdThemingProvider', '$stateProvider', '$urlRouterProvider', '$locationProvider', config];

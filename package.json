@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/frankievx/interview-x#readme",
   "dependencies": {
-    "angular": "^1.4.1",
+    "angular": "^1.5.8",
     "angular-animate": "^1.5.8",
     "angular-aria": "^1.5.8",
     "angular-material": "^1.1.1",
@@ -44,6 +44,7 @@
     "postcss-loader": "^0.5.1",
     "style-loader": "^0.12.3",
     "uglify-loader": "^1.2.0",
+    "url-loader": "^0.5.7",
     "webpack": "^1.10.1",
     "webpack-dev-middleware": "^1.8.1",
     "webpack-hot-middleware": "^2.12.2"

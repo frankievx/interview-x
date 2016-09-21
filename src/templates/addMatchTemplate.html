@@ -1,0 +1,44 @@
+
+<md-dialog-content class="md-dialog-content" id="dialog_45">
+  <h2 class="md-title">Add Match</h2>
+
+  <!-- ngIf: item.form.$submitted && item.form.$invalid -->
+
+  <form name="item.form" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max">
+  <h3 class="md-subhead">Teams</h3>
+    <div layout="row" class="input-row layout-row">
+      <md-input-container flex="" class="flex">
+        <label for="input_37">Home Team</label>
+        <input name="home_team" ng-model="match.home_team" required="true" class="ng-pristine ng-untouched md-input ng-invalid ng-invalid-required" id="input_37" aria-required="true" aria-invalid="true" ng-trim="false">
+      <div class="md-errors-spacer"></div>
+      </md-input-container>
+      <md-input-container flex="" class="flex">
+        <label for="input_38">Away Team</label>
+        <input name="away_team" ng-model="match.away_team" required="true" class="ng-pristine ng-untouched md-input ng-valid-min ng-valid-max ng-invalid ng-invalid-required" id="input_38" aria-required="true" aria-invalid="true">
+      <div class="md-errors-spacer"></div></md-input-container>
+    </div>
+    <h3 class="md-subhead">Scores</h3>
+    <div layout="row" class="input-row layout-row">
+      <md-input-container flex="" class="flex">
+        <label for="input_39">Home Score</label>
+        <input name="home_score" type="number" min="0" max="99" ng-model="match.home_score" required="true" class="ng-pristine ng-untouched md-input ng-valid-min ng-valid-max ng-invalid ng-invalid-required" id="input_39" aria-required="true" aria-invalid="true">
+      <div class="md-errors-spacer"></div></md-input-container>
+      <md-input-container flex="" class="flex">
+        <label for="input_40">Away Score</label>
+        <input name="away_score" type="number" min="0" max="99" ng-model="match.away_score" required="true" class="ng-pristine ng-untouched md-input ng-valid-min ng-valid-max ng-invalid ng-invalid-required" id="input_40" aria-required="true" aria-invalid="true">
+      <div class="md-errors-spacer"></div></md-input-container>
+    </div>
+    <h3 class="md-subhead">Date</h3>
+    <div layout="row" class="input-row layout-row">
+      <md-input-container flex="" class="flex">
+        <label for="input_42">Match Date</label>
+        <input name="match_date" type="date" ng-model="match.match_date" required="true" class="ng-pristine ng-untouched md-input ng-valid-min ng-valid-max ng-invalid ng-invalid-required" id="input_42" aria-required="true" aria-invalid="true">
+      <div class="md-errors-spacer"></div>
+      </md-input-container>
+    </div>
+  </form>
+</md-dialog-content>
+<div class="md-dialog-actions">
+  <button class="md-primary md-button md-ink-ripple" type="button"  ng-click="ctrl.addItem()" ng-disabled="item.form.$invalid" aria-label="Add Item" aria-disabled="true" disabled="disabled"><span>Add Match</span></button>
+  <button class="md-primary md-button md-ink-ripple" type="button" ng-click="ctrl.cancel()" aria-label="Cancel"><span>Cancel</span></button>
+</div>

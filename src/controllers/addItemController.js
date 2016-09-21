@@ -1,4 +1,4 @@
-export default angular.module('UberOpsApp').controller('addItemController', ['$mdDialog', '$nutrition', '$scope', function ($mdDialog, $nutrition, $scope) {
+angular.module('UberOpsApp').controller('addItemController', ['$mdDialog', '$nutrition', '$scope', function ($mdDialog, $nutrition, $scope) {
   'use strict';
 
   this.cancel = $mdDialog.cancel;

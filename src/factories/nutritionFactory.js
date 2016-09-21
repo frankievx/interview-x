@@ -1,4 +1,4 @@
-export default angular.module('UberOpsApp').factory('$nutrition', ['$resource', function ($resource) {
+angular.module('UberOpsApp').factory('$nutrition', ['$resource', function ($resource) {
   'use strict';
 
   return {

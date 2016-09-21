@@ -19,15 +19,15 @@ require('./db.js');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-if(process.env.NODE_ENV != "production") {
-	app.use(webpackDevMiddleware(compiler, {
-		publicPath: '/dist'
-	}));
-	app.use(webpackHotMiddleware(compiler));
-}
+// if(process.env.NODE_ENV != "production") {
+// 	app.use(webpackDevMiddleware(compiler, {
+// 		publicPath: '/dist'
+// 	}));
+// 	app.use(webpackHotMiddleware(compiler));
+// }
 
 //Static Route
-app.use('/dist', express.static('dist'));
+app.use('/src', express.static(path.join(__dirname, '../src')));
 
 //Index Route
 app.get('/', function(req, res) {

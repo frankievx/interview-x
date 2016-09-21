@@ -1,18 +1,21 @@
-import 'angular-animate';
-import 'angular-aria';
-import 'angular-resource';
-import './app.css';
-import angular from 'angular';
-import uiRouter from 'angular-ui-router';
-import ngMaterial from 'angular-material';
-import appConfig from './config.js';
-// import nutritionController from './nutrition/nutritionController.js';
 
-angular.module('UberOpsApp', [ require('angular-material-data-table'), ngMaterial, uiRouter])
-  .config(appConfig);
+angular.module('UberOpsApp', [ 'md.data.table', 'ngMaterial', 'ngResource'])
+  .config(['$compileProvider', '$mdThemingProvider', '$stateProvider', '$urlRouterProvider', '$locationProvider', function ($compileProvider, $mdThemingProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
+  $compileProvider.debugInfoEnabled(false);
+    
+  $mdThemingProvider.theme('default')
+    .primaryPalette('blue')
+    .accentPalette('pink');
 
-require('./controllers/addItemController.js');
-require('./controllers/deleteController.js');
-require('./controllers/nutritionController.js');
-require('./factories/authorizeFactory.js');
-require('./factories/nutritionFactory.js');
+  $locationProvider.html5Mode(true);
+
+  $urlRouterProvider.otherwise("/");
+
+  $stateProvider
+    .state('main', {
+      url: '/',
+      template: require('./templates/nutritionTemplate.html'),
+      controller: 'nutritionController',
+      title: ''
+    });
+  }]);

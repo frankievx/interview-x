@@ -7,12 +7,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="">
 
-  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-  <link href="bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css"/>
+  <link href="dependencies/angular-material.min.css" rel="stylesheet" type="text/css"/>
+  <link href="dependencies/md-data-table.min.css" rel="stylesheet" type="text/css"/>
+  <link href="icons.css" rel="stylesheet" type="text/css"/>
+  <link href="app.css" rel="stylesheet" type="text/css"/>
 </head>
 <body ng-app="UberOpsApp">
 	<base href="/">
 	<ui-view></ui-view>
-	<script src="/dist/bundle.js"></script>
+	<script type="text/javascript" src="dependencies/angular.min.js"></script>
+  <script type="text/javascript" src="dependencies/angular-animate.min.js"></script>
+  <script type="text/javascript" src="dependencies/angular-aria.min.js"></script>
+  <script type="text/javascript" src="dependencies/angular-material.min.js"></script>
+  <script type="text/javascript" src="dependencies/angular-messages.min.js"></script>
+  <script type="text/javascript" src="dependencies/angular-resource.min.js"></script>
+  <script type="text/javascript" src="dependencies/md-data-table.min.js"></script>
+
+  <script type="text/javascript" src="/src/app.js"></script>
+  <script type="text/javascript" src="/src/controllers/addItemController.js"></script>
+  <script type="text/javascript" src="/src/controllers/deleteController.js"></script>
+  <script type="text/javascript" src="/src/controllers/nutritionController.js"></script>
+  <script type="text/javascript" src="/src/factories/authorizeFactory.js"></script>
+  <script type="text/javascript" src="/src/factories/nutritionFactory.js"></script>
 </body>
 </html>

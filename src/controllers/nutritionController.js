@@ -1,5 +1,5 @@
 
-export default angular.module('UberOpsApp').controller('nutritionController', ['$mdDialog', '$nutrition', '$scope', function ($mdDialog, $nutrition, $scope) {
+angular.module('UberOpsApp').controller('nutritionController', ['$mdDialog', '$nutrition', '$scope', function ($mdDialog, $nutrition, $scope) {
   'use strict';
   
   var bookmark;

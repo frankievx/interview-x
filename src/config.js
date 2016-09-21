@@ -1,4 +1,10 @@
-function config($stateProvider, $urlRouterProvider, $locationProvider) {
+function config($compileProvider, $mdThemingProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
+  $compileProvider.debugInfoEnabled(false);
+    
+  $mdThemingProvider.theme('default')
+    .primaryPalette('blue')
+    .accentPalette('pink');
+
   $locationProvider.html5Mode(true);
 
   $urlRouterProvider.otherwise("/");
@@ -6,10 +12,10 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('main', {
       url: '/',
-      template: require('./main/main.html'),
-      controller: 'MainCtrl',
+      template: require('./templates/nutritionTemplate.html'),
+      controller: 'nutritionController',
       title: ''
     });
 }
 
-export default ['$stateProvider', '$urlRouterProvider', '$locationProvider', config];
+export default ['$compileProvider', '$mdThemingProvider', '$stateProvider', '$urlRouterProvider', '$locationProvider', config];

@@ -16,7 +16,8 @@ module.exports = {
       { test: /.js?$/, loader: 'babel-loader', exclude: /node_modules/},
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader','css?modules&importLoaders=2&sourceMap!autoprefixer') },
-      { test: /\.scss$/, loader: 'style!css?modules&importLoaders=2!sass' },
+      { test: /\.less$/, loader: 'style!css!postcss!less' },
+      { test: /\.html$/, loader: 'html-loader' },
       { test: /\.(jpg|png)$/, loader: 'url?limit=2500000' }
     ]
   },

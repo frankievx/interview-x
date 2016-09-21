@@ -22,10 +22,14 @@
     "angular-animate": "^1.5.8",
     "angular-aria": "^1.5.8",
     "angular-material": "^1.1.1",
+    "angular-material-data-table": "^0.10.9",
+    "angular-resource": "^1.5.8",
     "angular-ui-router": "^0.2.15",
     "express": "^4.13.0",
     "knex": "^0.12.1",
-    "mysql": "^2.11.1"
+    "less": "^2.7.1",
+    "mysql": "^2.11.1",
+    "node-less": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
@@ -36,6 +40,7 @@
     "file-loader": "^0.8.4",
     "html-loader": "^0.3.0",
     "http-proxy": "^1.11.1",
+    "less-loader": "^2.2.3",
     "postcss-loader": "^0.5.1",
     "style-loader": "^0.12.3",
     "uglify-loader": "^1.2.0",

@@ -1,5 +1,5 @@
-
- <md-toolbar class="md-whiteframe-1dp" ng-controller="mainController">
+<div ng-controller="mainController">
+ <md-toolbar class="md-whiteframe-1dp">
     <div class="md-toolbar-tools">
       <div class="md-title"> Soccer League</div>
       <span flex></span>
@@ -16,19 +16,13 @@
     </div>
   </md-toolbar>
   
-  <md-content layout="column" flex ng-controller="mainController">
+  <md-content layout="column" flex>
 
     <md-card>
       <md-toolbar class="md-table-toolbar md-default">
         <div class="md-toolbar-tools">
           <span>Live Matches</span>
           <div flex></div>
-          <md-button class="md-icon-button" ng-show="admin" ng-click="getMatches()">
-            <md-icon>refresh</md-icon>
-          </md-button>
-          <md-button class="md-icon-button" ng-show="admin" ng-click="addItem()">
-            <md-icon>add</md-icon>
-          </md-button>
         </div>
       </md-toolbar>
       
@@ -66,12 +60,6 @@
         <div class="md-toolbar-tools">
           <span>Future Matches</span>
           <div flex></div>
-          <md-button class="md-icon-button" ng-show="admin" ng-click="getMatches()">
-            <md-icon>refresh</md-icon>
-          </md-button>
-          <md-button class="md-icon-button" ng-show="admin" ng-click="addItem()">
-            <md-icon>add</md-icon>
-          </md-button>
         </div>
       </md-toolbar>
       
@@ -108,12 +96,6 @@
         <div class="md-toolbar-tools">
           <span>Past Matches</span>
           <div flex></div>
-          <md-button class="md-icon-button" ng-show="admin" ng-click="getMatches()">
-            <md-icon>refresh</md-icon>
-          </md-button>
-          <md-button class="md-icon-button" ng-show="admin" ng-click="addItem()">
-            <md-icon>add</md-icon>
-          </md-button>
         </div>
       </md-toolbar>
       
@@ -148,3 +130,4 @@
 
 
   </md-content>
+</div>

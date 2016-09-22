@@ -107,6 +107,8 @@ export default angular.module('UberOpsApp').controller('mainController', ['$mdTo
           return match_date > current;
         });
       })
+
+      $rootScope.$applyAsync()
     }
     
     

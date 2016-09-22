@@ -18,7 +18,7 @@ Immediately, without being an administrator, current standings are visible to th
 Future Matches, and Past Matches. 
 
 #Live Demo
-A live demo of the production build for this app can be found at 54.174.132.27:3000. I didn't really have time to set up an nginx web server on AWS, if I did I may have been able to set it up with a domain.
+A live demo of the production build for this app can be found at http://54.175.172.43/. I didn't really have time to set up an nginx web server on AWS, if I did I may have been able to set it up with a domain.
 
 #Running The Project
 If you would like to run the app you can do it in four easy steps.

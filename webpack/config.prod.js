@@ -15,9 +15,15 @@ module.exports = {
     loaders: [
       { test: /.js?$/, loader: 'babel-loader', exclude: /node_modules/},
       { test: /\.json$/, loader: 'json-loader' },
-      { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader','css?modules&importLoaders=2&sourceMap!autoprefixer') },
-      { test: /\.scss$/, loader: 'style!css?modules&importLoaders=2!sass' },
-      { test: /\.(jpg|png)$/, loader: 'url?limit=2500000' }
+      { test: /\.css$/, loader: 'style!css!postcss' },
+      { test: /\.less$/, loader: 'style!css!postcss!less' },
+      { test: /\.html$/, loader: 'html-loader' },
+      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
+      { test: /\.(jpe?g|gif)$/i, loaders: [ 
+        'file?hash=sha512&digest=hex&name=[hash].[ext]', 
+        'image?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        ]
+      }
     ]
   },
   resolve: {
@@ -28,7 +34,6 @@ module.exports = {
     extensions: ['', '.json', '.js']
   },
   plugins: [
-    new ExtractTextPlugin('style.css'),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')

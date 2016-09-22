@@ -1,0 +1,143 @@
+
+ <md-toolbar class="md-whiteframe-1dp" ng-controller="adminController">
+    <div class="md-toolbar-tools">
+      <div class="md-title">UberOps Soccer League</div>
+      <span flex></span>
+      <md-button class="md-raised" ng-show="admin" ng-click="logout()">Logout</md-button>
+      <md-button class="md-raised" ng-hide="admin" ng-click="login()">Login</md-button>
+      <md-button class="md-raised" ng-hide="admin" ng-click="signup()">Sign Up</md-button>
+    </div>
+  </md-toolbar>
+  
+  <md-content layout="column" flex ng-controller="standingsController">
+
+    <md-card>
+      <md-toolbar class="md-table-toolbar md-default">
+        <div class="md-toolbar-tools">
+          <span>Live Matches</span>
+          <div flex></div>
+          <md-button class="md-icon-button" ng-click="getLiveMatches()">
+            <md-icon>refresh</md-icon>
+          </md-button>
+          <md-button class="md-icon-button" ng-click="addItem()">
+            <md-icon>add</md-icon>
+          </md-button>
+        </div>
+      </md-toolbar>
+      
+      <md-table-container>
+        <table md-table md-progress="promise">
+          <thead ng-if="!options.decapitate" md-head>
+            <tr md-row>
+              <th md-column><span>Home</span></th>
+              <th md-column></th>
+              <th md-column><span>Away</span></th>
+              <th md-column md-numeric><span>Home Score</span></th>
+              <th md-column md-numeric><span>Away Score</span></th>
+              <th md-column><span>Match Date</span></th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row ng-repeat="liveMatch in liveMatches">
+              <td md-cell>{{liveMatch.home_team}}</td>
+              <td md-cell> vs </td>
+              <td md-cell>{{liveMatch.away_team}}</td>
+              <td md-cell>{{liveMatch.home_score}}</td>
+              <td md-cell>{{liveMatch.away_score}}</td>
+              <td md-cell>{{liveMatch.match_date.substring(0, 10)}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+
+      <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{liveMatches.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+    </md-card>
+
+    <md-card>
+      
+      <md-toolbar class="md-table-toolbar md-default">
+        <div class="md-toolbar-tools">
+          <span>Future Matches</span>
+          <div flex></div>
+          <md-button class="md-icon-button" ng-click="getMatches()">
+            <md-icon>refresh</md-icon>
+          </md-button>
+          <md-button class="md-icon-button" ng-click="addItem()">
+            <md-icon>add</md-icon>
+          </md-button>
+        </div>
+      </md-toolbar>
+      
+      <md-table-container>
+        <table md-table md-progress="promise">
+          <thead ng-if="!options.decapitate" md-head>
+            <tr md-row>
+              <th md-column><span>Home</span></th>
+              <th md-column></th>
+              <th md-column><span>Away</span></th>
+              <th md-column md-numeric><span>Home Score</span></th>
+              <th md-column md-numeric><span>Away Score</span></th>
+              <th md-column><span>Match Date</span></th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row ng-repeat="futureMatch in futureMatches">
+              <td md-cell>{{futureMatch.home_team}}</td>
+              <td md-cell> vs </td>
+              <td md-cell>{{futureMatch.away_team}}</td>
+              <td md-cell>0</td>
+              <td md-cell>0</td>
+              <td md-cell>{{futureMatch.match_date.substring(0, 10)}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+
+      <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{futureMatches.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+    </md-card>
+    
+    <md-card>
+      <md-toolbar class="md-table-toolbar md-default">
+        <div class="md-toolbar-tools">
+          <span>Past Matches</span>
+          <div flex></div>
+          <md-button class="md-icon-button" ng-click="getPastMatches()">
+            <md-icon>refresh</md-icon>
+          </md-button>
+          <md-button class="md-icon-button" ng-click="addItem()">
+            <md-icon>add</md-icon>
+          </md-button>
+        </div>
+      </md-toolbar>
+      
+      <md-table-container>
+        <table md-table md-progress="promise">
+          <thead ng-if="!options.decapitate" md-head>
+            <tr md-row>
+              <th md-column><span>Home</span></th>
+              <th md-column></th>
+              <th md-column><span>Away</span></th>
+              <th md-column md-numeric><span>Home Score</span></th>
+              <th md-column md-numeric><span>Away Score</span></th>
+              <th md-column><span>Match Date</span></th>
+            </tr>
+          </thead>
+          <tbody md-body>
+            <tr md-row ng-repeat="pastMatch in pastMatches">
+              <td md-cell>{{pastMatch.home_team}}</td>
+              <td md-cell> vs </td>
+              <td md-cell>{{pastMatch.away_team}}</td>
+              <td md-cell>{{pastMatch.home_score}}</td>
+              <td md-cell>{{pastMatch.away_score}}</td>
+              <td md-cell>{{pastMatch.match_date.substring(0, 10)}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+
+      <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{pastMatches.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+    </md-card>
+
+
+
+  </md-content>

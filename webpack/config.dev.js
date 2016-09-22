@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 
+
 module.exports = {
 
   devtool: 'eval',
@@ -20,7 +21,8 @@ module.exports = {
       { test: /\.css$/, loader: 'style!css!postcss' },
       { test: /\.less$/, loader: 'style!css!postcss!less' },
       { test: /\.html$/, loader: 'html-loader' },
-      { test: /\.(jpe?g|png|gif|svg)$/i, loaders: [ 
+      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
+      { test: /\.(jpe?g|gif)$/i, loaders: [ 
         'file?hash=sha512&digest=hex&name=[hash].[ext]', 
         'image?bypassOnDebug&optimizationLevel=7&interlaced=false'
         ]

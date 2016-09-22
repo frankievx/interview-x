@@ -1,0 +1,32 @@
+
+<md-dialog-content class="md-dialog-content" id="dialog_46">
+  <h2 class="md-title">Sign Up</h2>
+
+  <!-- ngIf: item.form.$submitted && item.form.$invalid -->
+
+  <form name="item.form" ng-submit="ctrl.sendSignupForm()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max">
+    <div layout="row" class="input-row layout-row">
+      <md-input-container flex="" class="flex">
+        <label for="input_20">Email</label>
+        <input name="email" type="email" ng-model="admin.email" required="true" class="ng-pristine ng-untouched md-input ng-invalid ng-invalid-required" id="input_37" aria-required="true" aria-invalid="true" ng-trim="false">
+      <div class="md-errors-spacer"></div>
+      </md-input-container>
+    </div>
+    <div layout="row" class="input-row layout-row">
+      <md-input-container flex="" class="flex">
+        <label for="input_21">Password</label>
+        <input name="password" type="password" ng-model="admin.password" required="true" class="ng-pristine ng-untouched md-input ng-valid-min ng-valid-max ng-invalid ng-invalid-required" id="input_21" aria-required="true" aria-invalid="true">
+      <div class="md-errors-spacer"></div></md-input-container>
+    </div>
+    <div layout="row" class="input-row layout-row">
+      <md-input-container flex="" class="flex">
+        <label for="input_22">Confirm Password</label>
+        <input name="password" type="password" ng-model="admin.confirmpassword" required="true" class="ng-pristine ng-untouched md-input ng-valid-min ng-valid-max ng-invalid ng-invalid-required" id="input_22" aria-required="true" aria-invalid="true">
+      <div class="md-errors-spacer"></div></md-input-container>
+    </div>
+  </form>
+</md-dialog-content>
+<div class="md-dialog-actions">
+  <button class="md-primary md-button md-ink-ripple" type="button"  ng-click="ctrl.sendSignupForm()" ng-disabled="item.form.$invalid" aria-label="Add Item" aria-disabled="true" disabled="disabled"><span>Signup</span></button>
+  <button class="md-primary md-button md-ink-ripple" type="button" ng-click="ctrl.cancel()" aria-label="Cancel"><span>Cancel</span></button>
+</div>

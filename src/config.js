@@ -1,4 +1,8 @@
-function config($stateProvider, $urlRouterProvider, $locationProvider) {
+function config( $mdThemingProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
+
+  $mdThemingProvider.theme('default')
+    .primaryPalette('blue')
+
   $locationProvider.html5Mode(true);
 
   $urlRouterProvider.otherwise("/");
@@ -6,10 +10,10 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('main', {
       url: '/',
-      template: require('./main/main.html'),
-      controller: 'MainCtrl',
+      template: require('./templates/standingsTemplate.html'),
+      controller: 'standingsController',
       title: ''
     });
 }
 
-export default ['$stateProvider', '$urlRouterProvider', '$locationProvider', config];
+export default ['$mdThemingProvider', '$stateProvider', '$urlRouterProvider', '$locationProvider', config];

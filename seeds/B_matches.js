@@ -9,7 +9,7 @@ exports.seed = function(knex, Promise) {
       away_team: 'Tigers',
       home_score: 3,
       away_score: 1,
-      match_date: '2016-03-22'
+      match_date: '2016-09-22'
     }),
 
     knex('matches').insert({
@@ -17,7 +17,7 @@ exports.seed = function(knex, Promise) {
       away_team: 'Sharks',
       home_score: 2,
       away_score: 2,
-      match_date: '2016-03-22'
+      match_date: '2016-09-24'
     }),
 
     knex('matches').insert({
@@ -25,7 +25,7 @@ exports.seed = function(knex, Promise) {
       away_team: 'Tigers',
       home_score: 1,
       away_score: 5,
-      match_date: '2016-03-22'
+      match_date: '2016-09-20'
     }),
 
     knex('matches').insert({
@@ -33,7 +33,7 @@ exports.seed = function(knex, Promise) {
       away_team: 'Monsters',
       home_score: 0,
       away_score: 1,
-      match_date: '2016-03-22'
+      match_date: '2016-09-22'
     }),
 
     knex('matches').insert({
@@ -41,7 +41,7 @@ exports.seed = function(knex, Promise) {
       away_team: 'Lions',
       home_score: 5,
       away_score: 0,
-      match_date: '2016-03-22'
+      match_date: '2016-09-21'
     })
   )
 };

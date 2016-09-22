@@ -2,9 +2,13 @@
   "name": "interviewx",
   "version": "1.0.0",
   "description": "UberOps Soccer League App",
-  "main": "server.js",
+  "main": "server/express-server.js",
   "scripts": {
-    "start": "NODE_ENV=development node ./server/express-server.js",
+    "start": "NODE_ENV=development node .",
+    "build": "webpack --verbose --colors --display-error-details --config webpack/config.prod.js",
+    "prod": "NODE_ENV=production forever start --uid 'uberops' . ",
+    "prod-node": "NODE_ENV=production node . ",
+    "postinstall": "npm run build && npm run prod-node",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,10 +30,13 @@
     "angular-resource": "^1.5.8",
     "angular-ui-router": "^0.2.15",
     "express": "^4.13.0",
+    "express-session": "^1.14.1",
     "knex": "^0.12.1",
     "less": "^2.7.1",
+    "momentjs": "^1.1.17",
     "mysql": "^2.11.1",
-    "node-less": "^1.0.0"
+    "node-less": "^1.0.0",
+    "uuid": "^2.0.3"
   },
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",

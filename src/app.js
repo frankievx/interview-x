@@ -12,5 +12,7 @@ angular.module('UberOpsApp', [ require('angular-material-data-table'), ngMateria
   .config(appConfig);
 
 require('./controllers/addItemController.js');
-require('./controllers/deleteController.js');
+require('./controllers/loginController.js');
+require('./controllers/signupController.js');
+require('./controllers/adminController.js');
 require('./controllers/standingsController.js');

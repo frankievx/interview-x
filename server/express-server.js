@@ -2,22 +2,24 @@ var path = require('path')
 var express = require('express');
 var bodyParser = require('body-parser');
 var webpack = require('webpack');
+var session = require('express-session');
+var uuid = require('uuid');
 var webpackDevMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
-var apiRoutes = require('./routes/apiRoutes.js');
+
 
 
 //Config
 var app = express();
+var admin = require('./models/adminModel');
 var apiRoutes = require('./routes/apiRoutes.js');
 var webpackConfig = require('../webpack/config.dev.js');
 var compiler = webpack(webpackConfig);
 var db = require('./db.js');
-
-// Start DB connection
-
+var secret = require('./secret.js').secret
 
 //Body Parser and Webpack Middleware
+app.use(session({ genid: function(req) { return uuid.v4() }, secret: secret, cookie: { maxAge: 600000 }}))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -36,6 +38,10 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../index.html'))
 });
 
+
+app.post('/login', admin.login);
+app.post('/signup', admin.signup);
+app.get('/logout', admin.logout);
 app.use('/api', apiRoutes)
 
 

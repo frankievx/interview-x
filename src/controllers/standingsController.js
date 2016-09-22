@@ -1,9 +1,8 @@
 
 export default angular.module('UberOpsApp')
   .controller('standingsController', ['$mdDialog', '$scope', '$http', function ($mdDialog, $scope, $http) {
-    'use strict';
     
-    var bookmark;
+    let bookmark;
     
     $scope.selected = [];
     
@@ -19,13 +18,14 @@ export default angular.module('UberOpsApp')
       order: 'nameToLower',
       page: 1
     };
+
+    $scope.pastMatches = [];
+    $scope.liveMatches = [];
+    $scope.futureMatches = [];
+    $scope.message = '';
+
     
-    function success(matches) {
-      console.log('success', matches);
-      $scope.matches = matches.data;
-    }
-    
-    $scope.addItem = function (event) {
+    $scope.addItem = (event) => {
       $mdDialog.show({
         clickOutsideToClose: true,
         controller: 'addItemController',
@@ -35,22 +35,38 @@ export default angular.module('UberOpsApp')
         template: require('../templates/addMatchTemplate.html'),
       }).then($scope.getMatches);
     };
+
+    $scope.getMatches = function() {
+      $scope.promise = $http.get('/api/matches').then((matches) => {
+
+        $scope.pastMatches = matches.data.filter(function(match) {
+          let match_date = match.match_date.slice(0,10);
+          let current = new Date()
+          current.setDate(current.getDate() - 1)
+          current = current.toISOString().slice(0,10);
+          return match.match_date < current;
+        });
+
+        $scope.liveMatches = matches.data.filter((match) => {
+          let match_date = match.match_date.slice(0,10);
+          let current = new Date()
+          current.setDate(current.getDate() - 1)
+          current = current.toISOString().slice(0,10);
+          return match_date == current;
+        });
+
+        $scope.futureMatches = matches.data.filter((match) => {
+          let match_date = match.match_date.slice(0,10);
+          let current = new Date()
+          current.setDate(current.getDate() - 1)
+          current = current.toISOString().slice(0,10);
+          return match_date > current;
+        });
+      }).$promise;
+    }
     
     
-    $scope.getMatches = function () {
-      $scope.promise = $http.get('/api/matches').then(success).$promise;
-    };
-    
-    $scope.removeFilter = function () {
-      $scope.filter.show = false;
-      $scope.query.filter = '';
-      
-      if($scope.filter.form.$dirty) {
-        $scope.filter.form.$setPristine();
-      }
-    };
-    
-    $scope.$watch('query.filter', function (newValue, oldValue) {
+    $scope.$watch('query.filter', (newValue, oldValue) => {
       if(!oldValue) {
         bookmark = $scope.query.page;
       }

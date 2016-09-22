@@ -1,7 +1,14 @@
 
- <md-toolbar class="md-whiteframe-1dp" ng-controller="adminController">
+ <md-toolbar class="md-whiteframe-1dp" ng-controller="mainController">
     <div class="md-toolbar-tools">
-      <div class="md-title">UberOps Soccer League</div>
+      <div class="md-title"> Soccer League</div>
+      <span flex></span>
+        <md-button class="md-fab md-mini" ng-show="admin" ng-click="addItem()">
+          <md-icon>add</md-icon>
+        </md-button>
+        <md-button class="md-fab md-mini" ng-show="admin" ng-click="getMatches()">
+          <md-icon>refresh</md-icon>
+        </md-button>
       <span flex></span>
       <md-button class="md-raised" ng-show="admin" ng-click="logout()">Logout</md-button>
       <md-button class="md-raised" ng-hide="admin" ng-click="login()">Login</md-button>
@@ -9,24 +16,24 @@
     </div>
   </md-toolbar>
   
-  <md-content layout="column" flex ng-controller="standingsController">
+  <md-content layout="column" flex ng-controller="mainController">
 
     <md-card>
       <md-toolbar class="md-table-toolbar md-default">
         <div class="md-toolbar-tools">
           <span>Live Matches</span>
           <div flex></div>
-          <md-button class="md-icon-button" ng-click="getLiveMatches()">
+          <md-button class="md-icon-button" ng-show="admin" ng-click="getMatches()">
             <md-icon>refresh</md-icon>
           </md-button>
-          <md-button class="md-icon-button" ng-click="addItem()">
+          <md-button class="md-icon-button" ng-show="admin" ng-click="addItem()">
             <md-icon>add</md-icon>
           </md-button>
         </div>
       </md-toolbar>
       
       <md-table-container>
-        <table md-table md-progress="promise">
+        <table md-table>
           <thead ng-if="!options.decapitate" md-head>
             <tr md-row>
               <th md-column><span>Home</span></th>
@@ -50,7 +57,7 @@
         </table>
       </md-table-container>
 
-      <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{liveMatches.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+     <!--  <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{liveMatches.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination> -->
     </md-card>
 
     <md-card>
@@ -59,17 +66,17 @@
         <div class="md-toolbar-tools">
           <span>Future Matches</span>
           <div flex></div>
-          <md-button class="md-icon-button" ng-click="getMatches()">
+          <md-button class="md-icon-button" ng-show="admin" ng-click="getMatches()">
             <md-icon>refresh</md-icon>
           </md-button>
-          <md-button class="md-icon-button" ng-click="addItem()">
+          <md-button class="md-icon-button" ng-show="admin" ng-click="addItem()">
             <md-icon>add</md-icon>
           </md-button>
         </div>
       </md-toolbar>
       
       <md-table-container>
-        <table md-table md-progress="promise">
+        <table md-table>
           <thead ng-if="!options.decapitate" md-head>
             <tr md-row>
               <th md-column><span>Home</span></th>
@@ -93,7 +100,7 @@
         </table>
       </md-table-container>
 
-      <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{futureMatches.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+      <!-- <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{futureMatches.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination> -->
     </md-card>
     
     <md-card>
@@ -101,17 +108,17 @@
         <div class="md-toolbar-tools">
           <span>Past Matches</span>
           <div flex></div>
-          <md-button class="md-icon-button" ng-click="getPastMatches()">
+          <md-button class="md-icon-button" ng-show="admin" ng-click="getMatches()">
             <md-icon>refresh</md-icon>
           </md-button>
-          <md-button class="md-icon-button" ng-click="addItem()">
+          <md-button class="md-icon-button" ng-show="admin" ng-click="addItem()">
             <md-icon>add</md-icon>
           </md-button>
         </div>
       </md-toolbar>
       
       <md-table-container>
-        <table md-table md-progress="promise">
+        <table md-table>
           <thead ng-if="!options.decapitate" md-head>
             <tr md-row>
               <th md-column><span>Home</span></th>
@@ -135,7 +142,7 @@
         </table>
       </md-table-container>
 
-      <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{pastMatches.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+      <!-- <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{pastMatches.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination> -->
     </md-card>
 
 

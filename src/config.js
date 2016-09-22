@@ -11,7 +11,7 @@ function config( $mdThemingProvider, $stateProvider, $urlRouterProvider, $locati
     .state('main', {
       url: '/',
       template: require('./templates/standingsTemplate.html'),
-      controller: 'standingsController',
+      controller: 'mainController',
       title: ''
     });
 }

@@ -11,6 +11,10 @@
     "postinstall": "npm run build && npm run prod-node",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  ".bin": {
+    "webpack": "./node_modules/.bin/webpack",
+    "forever": "./node_modules/.bin/forever"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/frankievx/interview-x.git"
@@ -31,6 +35,7 @@
     "angular-ui-router": "^0.2.15",
     "express": "^4.13.0",
     "express-session": "^1.14.1",
+    "forever": "^0.15.2",
     "knex": "^0.12.1",
     "less": "^2.7.1",
     "momentjs": "^1.1.17",

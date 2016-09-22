@@ -79,10 +79,10 @@ export default angular.module('UberOpsApp').controller('mainController', ['$mdTo
     };
 
     $scope.getMatches = function() {
-      console.log('working');
+      // console.log('working');
 
       $http.get('/api/matches').then((matches) => {
-        console.log('matches', matches);
+        // console.log('matches', matches);
         $scope.pastMatches = matches.data.filter(function(match) {
           let match_date = match.match_date.slice(0,10);
           let current = new Date()

@@ -1,8 +1,8 @@
-export default angular.module('UberOpsApp').controller('mainController', ['$mdToast', '$mdDialog', '$rootScope', '$scope', '$http', function($mdToast, $mdDialog, $rootScope, $scope, $http) {
+export default angular.module('UberOpsApp')
+.controller('mainController', ['$mdToast', '$mdDialog', '$rootScope', '$scope', '$http', function($mdToast, $mdDialog, $rootScope, $scope, $http) {
 
   let bookmark;
   
-  $scope.selected = [];
   $scope.filter = {
     options: {
       debounce: 500
@@ -14,6 +14,7 @@ export default angular.module('UberOpsApp').controller('mainController', ['$mdTo
     order: 'nameToLower',
     page: 1
   };
+  $scope.selected = [];
   $scope.pastMatches = [];
   $scope.liveMatches = [];
   $scope.futureMatches = [];
@@ -67,64 +68,62 @@ export default angular.module('UberOpsApp').controller('mainController', ['$mdTo
     })
   };
   
-    $scope.addItem = (event) => {
-      $mdDialog.show({
-        clickOutsideToClose: true,
-        controller: 'addItemController',
-        controllerAs: 'ctrl',
-        focusOnOpen: false,
-        targetEvent: event,
-        template: require('../templates/addMatchTemplate.html'),
-      }).then($scope.getMatches)
-    };
+  $scope.addItem = (event) => {
+    $mdDialog.show({
+      clickOutsideToClose: true,
+      controller: 'addItemController',
+      controllerAs: 'ctrl',
+      focusOnOpen: false,
+      targetEvent: event,
+      template: require('../templates/addMatchTemplate.html'),
+    }).then($scope.getMatches)
+  };
 
-    $scope.getMatches = function() {
-      // console.log('working');
+  $scope.getMatches = function() {
+    $http.get('/api/matches').then((matches) => {
+      $scope.pastMatches = matches.data.filter(function(match) {
+        let match_date = match.match_date.slice(0,10);
+        let current = new Date()
+        // current.setDate(current.getDate() - 1)
+        current = current.toISOString().slice(0,10);
+        return match.match_date < current;
+      });
 
-      $http.get('/api/matches').then((matches) => {
-        // console.log('matches', matches);
-        $scope.pastMatches = matches.data.filter(function(match) {
-          let match_date = match.match_date.slice(0,10);
-          let current = new Date()
-          // current.setDate(current.getDate() - 1)
-          current = current.toISOString().slice(0,10);
-          return match.match_date < current;
-        });
+      $scope.liveMatches = matches.data.filter((match) => {
+        let match_date = match.match_date.slice(0,10);
+        let current = new Date()
+        // current.setDate(current.getDate() - 1)
+        current = current.toISOString().slice(0,10);
+        return match_date == current;
+      });
 
-        $scope.liveMatches = matches.data.filter((match) => {
-          let match_date = match.match_date.slice(0,10);
-          let current = new Date()
-          // current.setDate(current.getDate() - 1)
-          current = current.toISOString().slice(0,10);
-          return match_date == current;
-        });
+      $scope.futureMatches = matches.data.filter((match) => {
+        let match_date = match.match_date.slice(0,10);
+        let current = new Date()
+        // current.setDate(current.getDate() - 1)
+        current = current.toISOString().slice(0,10);
+        return match_date > current;
+      });
+    })
 
-        $scope.futureMatches = matches.data.filter((match) => {
-          let match_date = match.match_date.slice(0,10);
-          let current = new Date()
-          // current.setDate(current.getDate() - 1)
-          current = current.toISOString().slice(0,10);
-          return match_date > current;
-        });
-      })
-
-      $rootScope.$applyAsync()
+    $rootScope.$applyAsync()
+  }
+  
+  
+  $scope.$watch('query.filter', (newValue, oldValue) => {
+    if(!oldValue) {
+      bookmark = $scope.query.page;
     }
     
+    if(newValue !== oldValue) {
+      $scope.query.page = 1;
+    }
     
-    $scope.$watch('query.filter', (newValue, oldValue) => {
-      if(!oldValue) {
-        bookmark = $scope.query.page;
-      }
-      
-      if(newValue !== oldValue) {
-        $scope.query.page = 1;
-      }
-      
-      if(!newValue) {
-        $scope.query.page = bookmark;
-      }
+    if(!newValue) {
+      $scope.query.page = bookmark;
+    }
 
-      $scope.getMatches();
-    });
+    $scope.getMatches();
+  });
+
 }]);

@@ -4,7 +4,6 @@ export default angular.module('UberOpsApp')
 
   this.cancel = $mdDialog.cancel;
   
-  
   this.sendLoginForm = () => {
     $scope.item.form.$setSubmitted();
     

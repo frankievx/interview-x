@@ -3,6 +3,16 @@ export default angular.module('UberOpsApp').controller('signupController', ['$md
 
   this.cancel = $mdDialog.cancel;
   
+  this.sendSignupForm = () => {
+    $scope.item.form.$setSubmitted();
+    
+    if($scope.item.form.$valid) {
+      $http.post('/signup',  $scope.admin)
+        .then(success)
+        .catch(error)
+    }
+  };
+  
   function success(response) {
     if(response.data.success) {
       $mdDialog.hide();
@@ -26,15 +36,6 @@ export default angular.module('UberOpsApp').controller('signupController', ['$md
     $scope.admin = false;
   }
   
-  this.sendSignupForm = () => {
-    $scope.item.form.$setSubmitted();
-    
-    if($scope.item.form.$valid) {
-      $http.post('/signup',  $scope.admin)
-        .then(success)
-        .catch(error)
-    }
-  };
 
 
   

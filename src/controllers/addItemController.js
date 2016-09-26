@@ -6,6 +6,14 @@ export default angular.module('UberOpsApp')
 
   this.cancel = $mdDialog.cancel;
   
+  this.addItem = function () {
+    $scope.item.form.$setSubmitted();
+    
+    if($scope.item.form.$valid) {
+      $http.post('/api/addMatch',  $scope.match).then(success);
+    }
+  };
+  
   function success(response) {
     if(response.data.success) {
       $mdDialog.hide();
@@ -18,12 +26,5 @@ export default angular.module('UberOpsApp')
     );
   }
   
-  this.addItem = function () {
-    $scope.item.form.$setSubmitted();
-    
-    if($scope.item.form.$valid) {
-      $http.post('/api/addMatch',  $scope.match).then(success);
-    }
-  };
   
 }]);
